@@ -1,0 +1,12 @@
+{
+  "404": {
+    "title": "Nothing to see here",
+    "desc": "Page you are trying to open does not exist. You may have mistyped the address, or the page has been moved to another URL. If you think this is an error contact support.",
+    "action": "Take me back to home page"
+  },
+  "500": {
+    "title": "Something bad just happened...",
+    "desc": "Our servers could not handle your request. Don't worry, our development team was already notified. Try refreshing the page.",
+    "action": "Refresh the page"
+  }
+}

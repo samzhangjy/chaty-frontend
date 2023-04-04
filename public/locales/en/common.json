@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "login": "Login",
+    "register": "Register"
+  },
+  "nav": {
+    "home": "Home",
+    "features": {
+      "name": "Features",
+      "try": "Get started",
+      "try-desc": "Quickly register a new Chaty account to try these features out.",
+      "details": {
+        "open-source": {
+          "name": "Open source",
+          "desc": "Backed up with strong open-source community at GitHub"
+        },
+        "free": {
+          "name": "Free for everyone",
+          "desc": "Yes, completely free without any fee for everyone and forever"
+        },
+        "secure": {
+          "name": "Secure",
+          "desc": "With source code available at GitHub, any vulnerabilities can be found in instant time"
+        },
+        "fast": {
+          "name": "Fast",
+          "desc": "Chaty is built with optimization for old devices in mind"
+        },
+        "web-based": {
+          "name": "Web based",
+          "desc": "Web based meaning that you can access it using your browser without installing additional apps"
+        },
+        "full-support": {
+          "name": "Full support",
+          "desc": "Encountered bugs while using Chaty? Email the bugs or improvements to samzhangjy@outlook.com"
+        }
+      }
+    },
+    "to-light": "Switch to light mode",
+    "to-dark": "Switch to dark mode"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "login": "登录",
+    "register": "注册"
+  },
+  "nav": {
+    "home": "首页",
+    "features": {
+      "name": "特性",
+      "try": "立即使用",
+      "try-desc": "快速注册一个全新 Chaty 账号来尝试一下 —— 仅需不足 1 分钟的时间。",
+      "details": {
+        "open-source": {
+          "name": "开放代码",
+          "desc": "以强有力的 GitHub 开源社区做支撑"
+        },
+        "free": {
+          "name": "完全免费",
+          "desc": "是的，Chaty 将对任何人永久免费，无需缴纳任何费用"
+        },
+        "secure": {
+          "name": "安全",
+          "desc": "任何可能的 Zero-day 漏洞都会被杰出的 GitHub 开源贡献者在第一时间发现"
+        },
+        "fast": {
+          "name": "快速",
+          "desc": "Chaty 从制作之初就秉持着为老旧设备做优化的理念"
+        },
+        "web-based": {
+          "name": "基于网页",
+          "desc": "基于网页意味着你可以仅仅使用一个浏览器即可访问和使用 Chaty ，无需下载任何其他的 App"
+        },
+        "full-support": {
+          "name": "技术支持",
+          "desc": "使用 Chaty 时遇到了 Bug 或者有想要我们改进的点？发送它们到 samzhangjy@outlook.com"
+        }
+      }
+    },
+    "to-light": "切换至浅色模式",
+    "to-dark": "切换至深色模式"
+  },
+  "footer": {
+    "copyright": "保留所有权利。"
+  }
+}
