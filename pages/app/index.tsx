@@ -41,6 +41,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { NextPageWithLayout } from "../_app";
+import Head from "next/head";
 
 const useStyles = createStyles((theme) => ({
   groupsContainer: {
@@ -224,6 +225,9 @@ const AppIndexPage: NextPageWithLayout = () => {
 
   return (
     <>
+      <Head>
+        <title>Chaty</title>
+      </Head>
       <div id="scrollableDiv" className={classes.messageScrollWrapper} ref={scrollRef}>
         <InfiniteScroll
           scrollableTarget="scrollableDiv"

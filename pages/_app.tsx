@@ -7,6 +7,7 @@ import { Notifications } from "@mantine/notifications";
 import { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { ReactElement, useEffect, useState } from "react";
 import { Provider } from "react-redux";
 
@@ -45,6 +46,9 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         <MantineProvider withGlobalStyles withNormalizeCSS theme={colorScheme === "light" ? lightTheme : darkTheme}>
           <Notifications />
           <RouterTransition />
+          <Head>
+            <title>Chaty</title>
+          </Head>
           {getLayout(<Component {...pageProps} />)}
         </MantineProvider>
       </ColorSchemeProvider>
