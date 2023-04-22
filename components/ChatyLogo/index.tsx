@@ -1,9 +1,11 @@
 import { Image, useMantineColorScheme } from "@mantine/core";
 import useStyles from "./styles";
+import { CSSProperties } from "react";
 
 export type ChatyLogoProps = {
   variant?: "logo-background" | "logo-text" | "logo-transparent" | "text-slogan";
   size?: "xl" | "lg" | "md" | "sm" | "xs" | number;
+  style?: CSSProperties;
 };
 
 const logoSizes = {
@@ -37,7 +39,7 @@ const logoSizes = {
   },
 };
 
-const ChatyLogo = ({ variant = "logo-background", size = "md" }: ChatyLogoProps) => {
+const ChatyLogo = ({ variant = "logo-background", size = "md", style }: ChatyLogoProps) => {
   const theme = useMantineColorScheme();
   const logoSrc = `/assets/logo/${theme.colorScheme}/${variant}.svg`;
   const { classes } = useStyles();
@@ -47,6 +49,7 @@ const ChatyLogo = ({ variant = "logo-background", size = "md" }: ChatyLogoProps)
       alt="Chaty logo"
       maw={typeof size === "number" ? size : logoSizes[variant][size]}
       className={classes.logo}
+      style={style}
     />
   );
 };

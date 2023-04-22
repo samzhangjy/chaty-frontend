@@ -2,6 +2,7 @@ import { Anchor, Button, Container, Text, Title } from "@mantine/core";
 import { Dots } from "./Dots";
 import useStyles from "./styles";
 import { Trans, useTranslation } from "next-i18next";
+import Link from "next/link";
 
 const HeroBanner = () => {
   const { classes } = useStyles();
@@ -44,11 +45,18 @@ const HeroBanner = () => {
         </Container>
 
         <div className={classes.controls}>
-          <Button className={classes.control} size="lg" variant="default" color="gray">
-            {ct("auth.login")}
+          <Button
+            className={classes.control}
+            size="lg"
+            variant="default"
+            color="gray"
+            component={Link}
+            href="/auth/login"
+          >
+            {t("banner.actions.login")}
           </Button>
-          <Button className={classes.control} size="lg">
-            {ct("auth.register")}
+          <Button className={classes.control} size="lg" component={Link} href="/auth/register">
+            {t("banner.actions.register")}
           </Button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 {
   "auth": {
     "login": "登录",
-    "register": "注册"
+    "register": "创建账号"
   },
   "nav": {
     "home": "首页",
@@ -37,7 +37,12 @@
       }
     },
     "to-light": "切换至浅色模式",
-    "to-dark": "切换至深色模式"
+    "to-dark": "切换至深色模式",
+    "actions": {
+      "logout": "退出登录",
+      "logout-success": "登出成功",
+      "logout-failed": "登出失败"
+    }
   },
   "footer": {
     "copyright": "保留所有权利。"

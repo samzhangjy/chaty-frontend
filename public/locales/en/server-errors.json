@@ -1,0 +1,26 @@
+{
+  "USER_EXCEPTIONS": "",
+  "U0001": "User with given ID could not be found.",
+
+  "LOGIN_EXCEPTIONS": "",
+  "L0001": "Wrong username or password.",
+
+  "REGISTER_EXCEPTIONS": "",
+  "R0001": "User with the same email or username already exists.",
+
+  "GROUP_EXCEPTIONS": "",
+  "G0001": "Handler with given id does not exist or does not have enough permission.",
+  "G0002": "You must declare a valid user to transfer ownership to.",
+  "G0003": "Request not found with given group.",
+  "G0004": "Group or member not found.",
+  "G0005": "User with given id have higher or equal permission with handler.",
+
+  "FRIEND_EXCEPTIONS": "",
+  "F0001": "A pending friend request for the same target user already exists.",
+  "F0002": "Friend request must be accepted to add the target user.",
+  "F0003": "Friend request with given id not found.",
+
+  "COMMON_EXCEPTIONS": "",
+  "C0001": "You are forbidden to access data on this endpoint.",
+  "C0002": "An unknown error occured, please try refreshing the page. If the error persists, contact support."
+}

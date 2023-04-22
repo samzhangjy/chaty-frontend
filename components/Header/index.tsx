@@ -1,5 +1,11 @@
+import logout from "@/features/user/logout";
+import useUser from "@/hooks/useUser";
+import User from "@/types/user";
+import { getUserAvatar } from "@/utils/avatar";
 import {
   ActionIcon,
+  Avatar,
+  Header as BaseHeader,
   Box,
   Burger,
   Button,
@@ -8,18 +14,20 @@ import {
   Divider,
   Drawer,
   Group,
-  Header as BaseHeader,
   HoverCard,
-  rem,
+  Menu,
   ScrollArea,
   SimpleGrid,
+  Skeleton,
   Text,
   ThemeIcon,
   Tooltip,
   UnstyledButton,
+  rem,
   useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
 import {
   IconBolt,
   IconChevronDown,
@@ -27,14 +35,51 @@ import {
   IconCoin,
   IconFingerprint,
   IconHelp,
+  IconLogout,
   IconMoon,
   IconSun,
   IconWorldWww,
 } from "@tabler/icons-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import ChatyLogo from "../ChatyLogo";
 import useStyles from "./styles";
+
+const UserMenu = ({ user, onLogout, isMobile = false }: { user: User; onLogout: () => void; isMobile?: boolean }) => {
+  const { classes, cx } = useStyles();
+  const { t } = useTranslation("common");
+  const [userMenuOpened, setUserMenuOpened] = useState(false);
+
+  return (
+    <Menu
+      width={isMobile ? "calc(100% - 40px)" : 260}
+      position={isMobile ? "bottom" : "bottom-end"}
+      onClose={() => setUserMenuOpened(false)}
+      onOpen={() => setUserMenuOpened(true)}
+    >
+      <Menu.Target>
+        <UnstyledButton
+          className={cx(classes.user, { [classes.userActive]: userMenuOpened, [classes.userNotOnMobile]: !isMobile })}
+        >
+          <Group spacing={7}>
+            <Avatar src={getUserAvatar(user)} alt={user.username} radius="xl" size={20} />
+            <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+              {user.username}
+            </Text>
+            <IconChevronDown size={rem(12)} stroke={1.5} />
+          </Group>
+        </UnstyledButton>
+      </Menu.Target>
+      <Menu.Dropdown>
+        <Menu.Item color="red" icon={<IconLogout size="0.9rem" stroke={1.5} />} onClick={onLogout}>
+          {t("nav.actions.logout")}
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
+  );
+};
 
 const Header = () => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
@@ -42,6 +87,8 @@ const Header = () => {
   const { classes, theme } = useStyles();
   const { t } = useTranslation("common");
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { user, isLoggedIn, mutate, isLoading } = useUser();
+  const router = useRouter();
 
   const data = [
     {
@@ -94,6 +141,23 @@ const Header = () => {
     </UnstyledButton>
   ));
 
+  const logoutAndMutate = async () => {
+    try {
+      logout();
+      await mutate();
+      notifications.show({
+        message: t("nav.actions.logout-success"),
+        color: "green",
+      });
+      router.push("/");
+    } catch {
+      notifications.show({
+        message: t("nav.actions.logout-failed"),
+        color: "red",
+      });
+    }
+  };
+
   return (
     <Box pb={120}>
       <BaseHeader height={60} px="md">
@@ -142,7 +206,9 @@ const Header = () => {
                         {t("nav.features.try-desc")}
                       </Text>
                     </div>
-                    <Button variant="default">{t("nav.features.try")}</Button>
+                    <Button variant="default" component={Link} href="/auth/register">
+                      {t("nav.features.try")}
+                    </Button>
                   </Group>
                 </div>
               </HoverCard.Dropdown>
@@ -150,8 +216,21 @@ const Header = () => {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">{t("auth.login")}</Button>
-            <Button>{t("auth.register")}</Button>
+            {isLoading ? (
+              <Skeleton h={30} w={150} />
+            ) : isLoggedIn ? (
+              <UserMenu user={user} onLogout={logoutAndMutate} />
+            ) : (
+              <>
+                <Button variant="default" component={Link} href="/auth/login">
+                  {t("auth.login")}
+                </Button>
+                <Button component={Link} href="/auth/register">
+                  {t("auth.register")}
+                </Button>
+              </>
+            )}
+
             <Tooltip label={colorScheme === "dark" ? t("nav.to-light") : t("nav.to-dark")}>
               <ActionIcon onClick={() => toggleColorScheme(colorScheme === "dark" ? "light" : "dark")}>
                 {colorScheme === "dark" ? <IconSun size="1rem" /> : <IconMoon size="1rem" />}
@@ -168,7 +247,7 @@ const Header = () => {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title="Chaty"
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
@@ -190,10 +269,27 @@ const Header = () => {
 
           <Divider my="sm" color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"} />
 
-          <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">{t("auth.login")}</Button>
-            <Button>{t("auth.register")}</Button>
-          </Group>
+          {isLoading ? (
+            <Group position="center" pb="md" px="md" grow>
+              <Skeleton h={40} w="100%" />
+            </Group>
+          ) : isLoggedIn ? (
+            <Group position="center" pb="xl" px="xs" grow>
+              <UserMenu user={user} onLogout={logoutAndMutate} isMobile />
+            </Group>
+          ) : (
+            <>
+              <Group position="center" grow pb="xl" px="md">
+                <Button variant="default" component={Link} href="/auth/login">
+                  {t("auth.login")}
+                </Button>
+                <Button component={Link} href="/auth/register">
+                  {t("auth.register")}
+                </Button>
+              </Group>
+            </>
+          )}
+
           <Group grow pb="xl" px="md">
             <Button variant="subtle" onClick={() => toggleColorScheme(colorScheme === "dark" ? "light" : "dark")}>
               <Group>

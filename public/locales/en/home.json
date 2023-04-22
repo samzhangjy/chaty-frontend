@@ -1,7 +1,11 @@
 {
   "banner": {
     "heading": "The <1>Ultimate</1> Chat Platform.",
-    "description": "Powered by amazing technologies such as <2>Nestjs</2> and <4>Nextjs</4>, Chaty recreates basic functionalities of WeChat with less than 2k lines of code. Backed with full open source community, Chaty can do more than ever."
+    "description": "Powered by amazing technologies such as <2>Nestjs</2> and <4>Nextjs</4>, Chaty recreates basic functionalities of WeChat with less than 2k lines of code. Backed with full open source community, Chaty can do more than ever.",
+    "actions": {
+      "login": "Sign in",
+      "register": "Create account"
+    }
   },
   "title": "Your ultimate chat platform"
 }

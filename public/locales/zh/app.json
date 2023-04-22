@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "tabs": {
+      "home": "首页",
+      "groups": "群组",
+      "create-group": "创建群组"
+    },
+    "actions": {
+      "logout": "退出登录",
+      "logout-success": "登出成功"
+    }
+  },
+  "main": {
+    "empty": "选择一个群组来开始聊天。",
+    "send-message": "发送一条消息...",
+    "send-message-action": "发送"
+  },
+  "errors": {
+    "msg-empty": "消息内容不能为空"
+  }
+}

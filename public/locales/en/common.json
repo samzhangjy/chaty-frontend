@@ -1,7 +1,7 @@
 {
   "auth": {
-    "login": "Login",
-    "register": "Register"
+    "login": "Sign in",
+    "register": "Create account"
   },
   "nav": {
     "home": "Home",
@@ -37,7 +37,12 @@
       }
     },
     "to-light": "Switch to light mode",
-    "to-dark": "Switch to dark mode"
+    "to-dark": "Switch to dark mode",
+    "actions": {
+      "logout": "Log out",
+      "logout-success": "Logged out successfully",
+      "logout-failed": "Failed to log out"
+    }
   },
   "footer": {
     "copyright": "All rights reserved."

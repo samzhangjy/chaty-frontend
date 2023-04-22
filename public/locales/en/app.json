@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "tabs": {
+      "home": "Home",
+      "groups": "Groups",
+      "create-group": "Create group"
+    },
+    "actions": {
+      "logout": "Log out",
+      "logout-success": "Successfully logged out."
+    }
+  },
+  "main": {
+    "empty": "Select a group to get started.",
+    "send-message": "Send a message...",
+    "send-message-action": "Send"
+  },
+  "errors": {
+    "msg-empty": "Message content cannot be empty"
+  }
+}
