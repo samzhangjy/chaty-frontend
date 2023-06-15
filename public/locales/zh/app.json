@@ -11,11 +11,31 @@
     }
   },
   "main": {
-    "empty": "选择一个群组来开始聊天。",
     "send-message": "发送一条消息...",
-    "send-message-action": "发送"
+    "send-message-action": "发送",
+    "group": {
+      "empty": "选择一个群组来开始聊天。",
+      "members": "成员",
+      "details": "群组详情"
+    },
+    "create-group": {
+      "title": "创建群组",
+      "labels": {
+        "name": "群组名称",
+        "members": "选择群组成员",
+        "select-not-found": "没人在这",
+        "select-me": "我"
+      },
+      "action": "创建群组"
+    }
   },
   "errors": {
-    "msg-empty": "消息内容不能为空"
+    "msg-empty": "消息内容不能为空",
+    "create-group": {
+      "name-empty": "群组名称不能为空",
+      "fetch-error": "在创建群组时发生了一个未知错误。请重试。",
+      "creation-failed": "创建失败",
+      "creation-success": "群组已创建！"
+    }
   }
 }

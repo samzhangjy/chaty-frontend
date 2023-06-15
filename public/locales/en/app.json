@@ -11,11 +11,31 @@
     }
   },
   "main": {
-    "empty": "Select a group to get started.",
     "send-message": "Send a message...",
-    "send-message-action": "Send"
+    "send-message-action": "Send",
+    "group": {
+      "members": "Members",
+      "empty": "Select a group to get started.",
+      "details": "Group information"
+    },
+    "create-group": {
+      "title": "Create group",
+      "labels": {
+        "name": "Group name",
+        "members": "Choose group members",
+        "select-not-found": "Nobody here",
+        "select-me": "Me"
+      },
+      "action": "Create group"
+    }
   },
   "errors": {
-    "msg-empty": "Message content cannot be empty"
+    "msg-empty": "Message content cannot be empty",
+    "create-group": {
+      "name-empty": "Group name cannot be empty",
+      "fetch-error": "An unknown error occured while creating group. Please try again.",
+      "creation-failed": "Failed to create group",
+      "creation-success": "Group created!"
+    }
   }
 }
